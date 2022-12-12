@@ -1,0 +1,34 @@
+﻿@model E_commence.Models.Kategoriler
+
+@{
+    ViewBag.Title = "KategoriSil";
+    Layout = "~/Views/Shared/_Layout - Admin.cshtml";
+}
+
+<h2>KategoriSil</h2>
+
+<h3>Silmek İstediğinizden emin misiniz?</h3>
+<div>
+    <h4>KAtegori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kategori)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Kategoriler")
+        </div>
+    }
+</div>

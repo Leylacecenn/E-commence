@@ -1,0 +1,11 @@
+﻿@model IEnumerable<E_commence.Models.Kategoriler>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <a href="~/Home/KategoriByUrunList/@item.KategoriID" class="nav-item nav-link">@item.Kategori</a>
+    // @Html.ActionLink(item.Kategori, "KategoriByUrunList", new { id = item.KategoriID }, new { @class = "nav-item nav-link" })
+}
+

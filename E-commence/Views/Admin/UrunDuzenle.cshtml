@@ -1,0 +1,85 @@
+﻿@model E_commence.Models.Urunler
+@{
+    ViewBag.Title = "UrunDuzenle";
+    Layout = "~/Views/Shared/_Layout - Admin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal col-8 float-left">
+        <div class="card-body">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.UrunId)
+
+            <h4 class="card-title">Personal</h4>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.UrunAdi, htmlAttributes: new { @class = "col-sm-3 text-end control-label col-form-label" })
+
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.UrunAdi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UrunAdi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Fiyat, htmlAttributes: new { @class = "col-sm-3 text-end control-label col-form-label" })
+
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Fiyat, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Fiyat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Aciklama, htmlAttributes: new { @class = "col-sm-3 text-end control-label col-form-label" })
+
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Aciklama, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Gorsel1, htmlAttributes: new { @class = "col-sm-3 text-end control-label col-form-label" })
+
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Gorsel1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gorsel1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Gorsel2, htmlAttributes: new { @class = "col-sm-3 text-end control-label col-form-label" })
+
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.Gorsel2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gorsel2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.KategoriID, htmlAttributes: new { @class = "col-sm-3 text-end control-label col-form-label" })
+
+                <div class="col-sm-9">
+                    @Html.EditorFor(model => model.KategoriID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KategoriID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @* liste kategori seçme çalış *@
+            @*<asp:FileUpload runat="server"></asp:FileUpload>*@ @*araştır*@
+            <div class="form-group row">
+                <label for="cono1"
+                       class="col-sm-3 text-end control-label col-form-label"></label>
+                <div class="col-sm-9">
+                    <input type="submit" value="Save" class="btn btn-primary" style="width:100%" />
+                </div>
+            </div>
+
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
+
+
+
+
+
