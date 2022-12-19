@@ -38,6 +38,7 @@
     <EntitySetMapping Name="Sepets">
       <EntityTypeMapping TypeName="ecommenceModel1.Sepet">
         <MappingFragment StoreEntitySet="Sepet">
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
           <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
           <ScalarProperty Name="Toplam" ColumnName="Toplam" />
           <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />

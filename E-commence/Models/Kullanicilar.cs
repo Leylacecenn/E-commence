@@ -14,11 +14,20 @@ namespace E_commence.Models
     
     public partial class Kullanicilar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kullanicilar()
+        {
+            this.Sepets = new HashSet<Sepet>();
+        }
+    
         public int KullaniciID { get; set; }
         public string KullaniciAdi { get; set; }
         public string Sifre { get; set; }
         public string AdSoyad { get; set; }
         public string Adres { get; set; }
         public Nullable<int> Rol { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sepet> Sepets { get; set; }
     }
 }

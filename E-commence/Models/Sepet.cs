@@ -20,7 +20,9 @@ namespace E_commence.Models
         public Nullable<decimal> Fiyat { get; set; }
         public Nullable<decimal> Toplam { get; set; }
         public Nullable<int> SiparisID { get; set; }
+        public Nullable<int> KullaniciID { get; set; }
     
         public virtual Siparisler Siparisler { get; set; }
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }

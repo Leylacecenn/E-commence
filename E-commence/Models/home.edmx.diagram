@@ -9,10 +9,11 @@
         <EntityTypeShape EntityType="ecommenceModel1.Urunler" Width="1.5" PointX="4.625" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ecommenceModel1.FK_Urunler_Kategoriler" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ecommenceModel1.Kullanicilar" Width="1.5" PointX="10.625" PointY="3.75" />
-        <EntityTypeShape EntityType="ecommenceModel1.Sepet" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="ecommenceModel1.Sepet" Width="1.5" PointX="5" PointY="4" />
         <EntityTypeShape EntityType="ecommenceModel1.Siparisler" Width="1.5" PointX="0.75" PointY="5.25" />
         <EntityTypeShape EntityType="ecommenceModel1.sysdiagram" Width="1.5" PointX="8.5" PointY="1.5" />
         <AssociationConnector Association="ecommenceModel1.FK_Sepet_Siparisler1" />
+        <AssociationConnector Association="ecommenceModel1.FK_Sepet_Kullanicilar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

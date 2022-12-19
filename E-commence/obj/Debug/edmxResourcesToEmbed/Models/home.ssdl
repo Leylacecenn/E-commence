@@ -29,6 +29,7 @@
     <Property Name="Fiyat" Type="money" />
     <Property Name="Toplam" Type="money" />
     <Property Name="SiparisID" Type="int" />
+    <Property Name="KullaniciID" Type="int" />
   </EntityType>
   <EntityType Name="Siparisler">
     <Key>
@@ -60,6 +61,18 @@
     <Property Name="Gorsel2" Type="nvarchar" MaxLength="50" />
     <Property Name="KategoriID" Type="int" />
   </EntityType>
+  <Association Name="FK_Sepet_Kullanicilar">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Sepet">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sepet_Siparisler1">
     <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="0..1" />
     <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
@@ -91,6 +104,10 @@
     <EntitySet Name="Siparisler" EntityType="Self.Siparisler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Sepet_Kullanicilar" Association="Self.FK_Sepet_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Sepet" EntitySet="Sepet" />
+    </AssociationSet>
     <AssociationSet Name="FK_Sepet_Siparisler1" Association="Self.FK_Sepet_Siparisler1">
       <End Role="Siparisler" EntitySet="Siparisler" />
       <End Role="Sepet" EntitySet="Sepet" />

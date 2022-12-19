@@ -275,6 +275,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\alertifyjs\alertify.css" />
+    <Content Include="Content\alertifyjs\alertify.min.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.css" />
+    <Content Include="Content\alertifyjs\themes\default.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Commence.Context.tt">
@@ -297,6 +313,8 @@
       <DependentUpon>home.edmx</DependentUpon>
       <LastGenOutput>home.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\alertify.js" />
+    <Content Include="Scripts\alertify.min.js" />
     <Content Include="template\Admin\assets\extra-libs\calendar\calendar.css" />
     <Content Include="template\Admin\assets\extra-libs\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.css" />
     <Content Include="template\Admin\assets\extra-libs\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
@@ -1631,6 +1649,8 @@
     <Content Include="Views\Home\KategoriMenu.cshtml" />
     <Content Include="Views\Home\KategoriListIndex.cshtml" />
     <Content Include="Views\Admin\KategoriEkle.cshtml" />
+    <Content Include="Views\Home\SepetToplam.cshtml" />
+    <Content Include="Views\Home\Sepet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

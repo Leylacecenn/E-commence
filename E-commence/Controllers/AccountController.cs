@@ -35,14 +35,14 @@ namespace E_commence.Controllers
                     ModelState.Clear();
                     ViewBag.Message = account.AdSoyad + " " + " successfully registered.";
                 }
-                return View();
+                return RedirectToAction("Login");
             }
             catch (Exception ex)
             {
                 return View(ex);
             }
-           
-           
+
+
         }
         public ActionResult Login()
         {
@@ -55,7 +55,7 @@ namespace E_commence.Controllers
             {
                 try
                 {
-                     var kullanici = db.Kullanicilars.Where(u => u.KullaniciAdi == user.KullaniciAdi && u.Sifre == user.Sifre).FirstOrDefault();
+                    var kullanici = db.Kullanicilars.Where(u => u.KullaniciAdi == user.KullaniciAdi && u.Sifre == user.Sifre).FirstOrDefault();
                     if (kullanici != null)
                     {
                         Session["UserID"] = kullanici.KullaniciID.ToString();
@@ -73,7 +73,7 @@ namespace E_commence.Controllers
                 {
                     return View(ex);
                 }
-                
+
             }
 
         }
@@ -87,6 +87,11 @@ namespace E_commence.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login");
         }
     }
 }
