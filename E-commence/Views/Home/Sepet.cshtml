@@ -103,7 +103,7 @@
                             <h5>Net Toplam</h5>
                             <h5> @toplam.ToString() ₺</h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Satın Al</button>
+                        @Html.ActionLink("Satın Al", "SiparisEkle", new { toplam = @toplam.ToString() }, new { @class = "btn btn-block btn-primary font-weight-bold my-3 py-3" })
                     </div>
 
                 </div>

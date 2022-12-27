@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -78,15 +81,12 @@ namespace E_commence.Controllers
 
                 using (ecommenceEntities1 entities = new ecommenceEntities1())
                 {
+
                     entities.Sepets.Add(newsepet);
                     entities.SaveChanges();
                 }
 
                 return RedirectToAction("KategoriByUrunList");
-
-
-
-
             }
             else
             {
@@ -101,7 +101,6 @@ namespace E_commence.Controllers
         }
         public ActionResult SepetSil(int id)
         {
-
             using (ecommenceEntities1 entities = new ecommenceEntities1())
             {
                 Sepet sepetsil = entities.Sepets.Where(x => x.SepetID == id).FirstOrDefault();
@@ -110,6 +109,84 @@ namespace E_commence.Controllers
                 TempData["SuccessMessage"] = "silme başarılı";
             }
             return RedirectToAction("Sepet");
+
+        }
+        public ActionResult SiparisEkle(double toplam)
+        {
+            //sepete ekle sadece
+            int kullaniciID = Convert.ToInt32(Session["UserID"]);
+
+            //kullanıcının sepetteki siparisID boş olanlara Id ata ve toplam tutarı siparis tablosuna ekle. 
+            List<Sepet> sepetlistesi = entities.Sepets.Where(c => c.KullaniciID == kullaniciID && c.SiparisID == null).ToList();
+
+            if (Session["UserID"] != null)
+            {
+
+                Siparisler siparis = new Siparisler();
+                siparis.Tarih = DateTime.Now;
+                siparis.Toplam = Convert.ToDecimal(toplam);
+                var sipariseklenen = entities.Siparislers.Add(siparis);
+                entities.SaveChanges();
+
+                //sepetdeki siparisIDleri güncelle
+                foreach (Sepet sepet in sepetlistesi)
+                {
+                    sepet.SiparisID = sipariseklenen.SiparisID;
+                    entities.Entry(sepet).State = System.Data.Entity.EntityState.Modified;
+                    entities.SaveChanges();
+                }
+                return RedirectToAction("KategoriByUrunList");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+        public ActionResult SiparisListesi()
+        {
+            int kullaniciID = Convert.ToInt32(Session["UserID"]);
+            if (Session["UserID"] != null)
+            {
+                //kullanıcının sepetteki siparisID boş olanlara Id ata ve toplam tutarı siparis tablosuna ekle. 
+
+                return View(entities.Siparislers.Where(c => c.KullaniciID == kullaniciID).ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+        public ActionResult SepetDetaylari(int siparisID)
+        {
+            int kullaniciID = Convert.ToInt32(Session["UserID"]);
+            if (Session["UserID"] != null)
+            {
+                //gelen sipariş id ye göre sepete atılanları gösterir
+                //var listesepet = (from se in entities.Sepets
+                //              join si in entities.Siparislers on se.SiparisID equals si.SiparisID
+                //              join urun in entities.Urunlers on se.UrunID equals urun.UrunId
+                //              where  se.KullaniciID == kullaniciID && se.SiparisID == siparisID
+                //              select new SiparislerSepetDetay
+                //              {
+                //                  SiparisID= si.SiparisID,
+                //                  SepetID=se.SepetID,
+                //                  UrunID=urun.UrunId,
+                //                  UrunAdi=urun.UrunAdi,
+                //                  Adet=se.Adet,
+                //                  Fiyat=se.Fiyat,
+                //                  Aratoplam=se.Toplam,
+                //                  SiparisTarihi=si.Tarih
+
+                //              }).ToList();
+
+                //return View(listesepet);
+                List<Sepet> liste = entities.Sepets.Where(c => c.KullaniciID == kullaniciID && c.SiparisID == siparisID).ToList();
+                return View(liste);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
         }
     }

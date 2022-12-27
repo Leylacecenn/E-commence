@@ -61,7 +61,6 @@ namespace E_commence.Controllers
             try
             {
                 using (ecommenceEntities1 entities = new ecommenceEntities1())
-                // using (ecommenceEntities entities = new ecommenceEntities())
                 {
                     entities.Entry(duzenle).State = System.Data.Entity.EntityState.Modified;
                     entities.SaveChanges();

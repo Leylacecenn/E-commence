@@ -1,0 +1,64 @@
+﻿@model IEnumerable<E_commence.Models.Sepet>
+
+@{
+    ViewBag.Title = "SepetDetaylari";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SepetDetaylari</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toplam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Siparisler.SiparisID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kullanicilar.KullaniciAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toplam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Siparisler.SiparisID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kullanicilar.KullaniciAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SepetID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SepetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SepetID })
+        </td>
+    </tr>
+}
+
+</table>

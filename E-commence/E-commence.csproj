@@ -1182,12 +1182,16 @@
     <Compile Include="Models\Kullanicilar.cs">
       <DependentUpon>home.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KullaniciSiparis_Result.cs">
+      <DependentUpon>home.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sepet.cs">
       <DependentUpon>home.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Siparisler.cs">
       <DependentUpon>home.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SiparislerSepetDetay.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Commence.tt</DependentUpon>
     </Compile>
@@ -1651,6 +1655,8 @@
     <Content Include="Views\Admin\KategoriEkle.cshtml" />
     <Content Include="Views\Home\SepetToplam.cshtml" />
     <Content Include="Views\Home\Sepet.cshtml" />
+    <Content Include="Views\Home\SiparisListesi.cshtml" />
+    <Content Include="Views\Home\SepetDetaylari.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

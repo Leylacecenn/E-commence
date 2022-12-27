@@ -18,6 +18,7 @@ namespace E_commence.Models
         public Kullanicilar()
         {
             this.Sepets = new HashSet<Sepet>();
+            this.Siparislers = new HashSet<Siparisler>();
         }
     
         public int KullaniciID { get; set; }
@@ -29,5 +30,7 @@ namespace E_commence.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sepet> Sepets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Siparisler> Siparislers { get; set; }
     }
 }

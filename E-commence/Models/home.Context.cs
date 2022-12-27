@@ -12,6 +12,8 @@ namespace E_commence.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ecommenceEntities1 : DbContext
     {
@@ -31,5 +33,14 @@ namespace E_commence.Models
         public virtual DbSet<Sepet> Sepets { get; set; }
         public virtual DbSet<Siparisler> Siparislers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    
+        public virtual ObjectResult<KullaniciSiparis_Result> KullaniciSiparis(Nullable<int> kullaniciID)
+        {
+            var kullaniciIDParameter = kullaniciID.HasValue ?
+                new ObjectParameter("kullaniciID", kullaniciID) :
+                new ObjectParameter("kullaniciID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<KullaniciSiparis_Result>("KullaniciSiparis", kullaniciIDParameter);
+        }
     }
 }

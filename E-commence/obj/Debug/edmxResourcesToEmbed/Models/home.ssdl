@@ -38,6 +38,7 @@
     <Property Name="SiparisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Toplam" Type="money" />
     <Property Name="Tarih" Type="date" />
+    <Property Name="KullaniciID" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -85,6 +86,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Siparisler_Kullanicilar">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Siparisler">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Urunler_Kategoriler">
     <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="0..1" />
     <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
@@ -97,6 +110,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="KullaniciSiparis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="kullaniciID" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="ecommenceModel1StoreContainer">
     <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
@@ -111,6 +127,10 @@
     <AssociationSet Name="FK_Sepet_Siparisler1" Association="Self.FK_Sepet_Siparisler1">
       <End Role="Siparisler" EntitySet="Siparisler" />
       <End Role="Sepet" EntitySet="Sepet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparisler_Kullanicilar" Association="Self.FK_Siparisler_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Siparisler" EntitySet="Siparisler" />
     </AssociationSet>
     <AssociationSet Name="FK_Urunler_Kategoriler" Association="Self.FK_Urunler_Kategoriler">
       <End Role="Kategoriler" EntitySet="Kategoriler" />

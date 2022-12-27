@@ -23,8 +23,10 @@ namespace E_commence.Models
         public int SiparisID { get; set; }
         public Nullable<decimal> Toplam { get; set; }
         public Nullable<System.DateTime> Tarih { get; set; }
+        public Nullable<int> KullaniciID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sepet> Sepets { get; set; }
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }

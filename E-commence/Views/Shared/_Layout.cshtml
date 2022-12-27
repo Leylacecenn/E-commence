@@ -51,7 +51,7 @@
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hesabım</button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <p class="dropdown-item">Merhaba <b> @Session["UserName"].ToString()</b></p>
-                                <a class="dropdown-item" href="@Url.Action("Siparis","Home",new { id = Session["UserID"].ToString() })">Siparişlerim</a>
+                                <a class="dropdown-item" href="@Url.Action("SiparisListesi","Home",new { id = Session["UserID"].ToString() })">Siparişlerim</a>
                                 <a class="dropdown-item" href="@Url.Action("Sepet","Home",new { id = Session["UserID"].ToString() })">Sepetim</a>
                                 <a class="dropdown-item" href="@Url.Action("LogOut","Account")"> Çıkış Yap</a>
                             </div>
@@ -142,6 +142,7 @@
                             <a href="@Url.Action("Index","Home")" class="nav-item nav-link active">AnaSayfa</a>
                             <a href="@Url.Action("KategoriByUrunList","Home")" class="nav-item nav-link">Mağaza</a>
                             <a href="@Url.Action("Sepet","Home")" class="nav-item nav-link">Sepetim</a>
+                            <a href="@Url.Action("SiparisListesi","Home")" class="nav-item nav-link">Siparişler</a>
                             <a href="@Url.Action("iletisim","Home")" class="nav-item nav-link">İletişim</a>
                             <a href="@Url.Action("Login","Admin")" class="nav-item nav-link">Admin</a>
                         </div>

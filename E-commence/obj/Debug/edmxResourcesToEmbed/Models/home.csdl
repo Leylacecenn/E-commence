@@ -53,6 +53,13 @@
       <End Role="Kullanicilar" EntitySet="Kullanicilars" />
       <End Role="Sepet" EntitySet="Sepets" />
     </AssociationSet>
+    <FunctionImport Name="KullaniciSiparis" ReturnType="Collection(ecommenceModel1.KullaniciSiparis_Result)">
+      <Parameter Name="kullaniciID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <AssociationSet Name="FK_Siparisler_Kullanicilar" Association="ecommenceModel1.FK_Siparisler_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Siparisler" EntitySet="Siparislers" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Kullanicilar">
     <Key>
@@ -65,6 +72,7 @@
     <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Rol" Type="Int32" />
     <NavigationProperty Name="Sepets" Relationship="ecommenceModel1.FK_Sepet_Kullanicilar" FromRole="Kullanicilar" ToRole="Sepet" />
+    <NavigationProperty Name="Siparislers" Relationship="ecommenceModel1.FK_Siparisler_Kullanicilar" FromRole="Kullanicilar" ToRole="Siparisler" />
   </EntityType>
   <EntityType Name="Sepet">
     <Key>
@@ -88,6 +96,8 @@
     <Property Name="Toplam" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="Tarih" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Sepets" Relationship="ecommenceModel1.FK_Sepet_Siparisler1" FromRole="Siparisler" ToRole="Sepet" />
+    <Property Name="KullaniciID" Type="Int32" />
+    <NavigationProperty Name="Kullanicilar" Relationship="ecommenceModel1.FK_Siparisler_Kullanicilar" FromRole="Siparisler" ToRole="Kullanicilar" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -119,6 +129,22 @@
         <PropertyRef Name="KullaniciID" />
       </Principal>
       <Dependent Role="Sepet">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="KullaniciSiparis_Result">
+    <Property Type="Decimal" Name="Toplam" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="Sipariş_Adet" Nullable="true" />
+  </ComplexType>
+  <Association Name="FK_Siparisler_Kullanicilar">
+    <End Type="ecommenceModel1.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+    <End Type="ecommenceModel1.Siparisler" Role="Siparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Siparisler">
         <PropertyRef Name="KullaniciID" />
       </Dependent>
     </ReferentialConstraint>

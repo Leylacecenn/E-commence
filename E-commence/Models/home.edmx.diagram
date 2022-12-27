@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="ecommenceModel1.sysdiagram" Width="1.5" PointX="8.5" PointY="1.5" />
         <AssociationConnector Association="ecommenceModel1.FK_Sepet_Siparisler1" />
         <AssociationConnector Association="ecommenceModel1.FK_Sepet_Kullanicilar" />
+        <AssociationConnector Association="ecommenceModel1.FK_Siparisler_Kullanicilar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

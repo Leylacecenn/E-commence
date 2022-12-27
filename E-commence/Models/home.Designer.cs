@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\mehmetyildiz\Desktop\c#\mvc\E-commence\E-commence\Models\home.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\mehmetyildiz\Desktop\Projeler\1-E-commence_ModelFirst_MVC\E-commence\Models\home.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
